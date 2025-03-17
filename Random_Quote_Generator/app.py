@@ -5,6 +5,7 @@ import pyperclip
 import urllib3
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 from deep_translator import GoogleTranslator
+import urllib.parse
 
 # Ye line SSL verification warnings ko disable karta hai
 urllib3.disable_warnings()
@@ -135,15 +136,6 @@ st.markdown("""
         footer {
             color: var(--text-secondary);
         }
-        
-        a {
-            color: var(--accent-color) !important;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -363,25 +355,26 @@ if st.session_state.quote:    # Agar quote successfully fetch hua hai
                        unsafe_allow_html=True)    # Tags ko comma separated list me display karta hai
     
     # ---------- ACTION BUTTONS ----------
-    col1, col2 = st.columns(2)    # Buttons ke liye 2 columns create karta hai
+    # Single Copy Quote button
+    if st.button("Copy Quote 📋"):    # Copy button create karta hai
+        copy_quote(    # Copy function ko call karta hai
+            content,    # Current quote text
+            author,     # Current author name
+            st.session_state.quote.get("tags", [])    # Tags, agar available hain to
+        )
     
-    with col1:    # Pehle column me Copy button
-        if st.button("Copy Quote 📋"):    # Copy button create karta hai
-            copy_quote(    # Copy function ko call karta hai
-                content,    # Current quote text
-                author,     # Current author name
-                st.session_state.quote.get("tags", [])    # Tags, agar available hain to
-            )
+    # Share section with social media buttons
+    share_text = f'"{content}" - {author}'    # Share karne ke liye text format karta hai
+    st.markdown("<p style='color: var(--text-secondary); margin-bottom: 5px;'>Share Quote:</p>", unsafe_allow_html=True)
     
-    with col2:    # Dusre column me Share button
-        if st.button("Share Quote 🔗"):    # Share button create karta hai
-            share_text = f'"{content}" - {author}'    # Share karne ke liye text format karta hai
-            try:
-                pyperclip.copy(share_text)    # Text ko clipboard pe copy karta hai
-                st.toast("Share link copied to clipboard! 🔗")    # Success message dikhata hai
-            except Exception as e:
-                st.warning("Unable to copy to clipboard. Please copy manually:")    # Warning message dikhata hai
-                st.code(share_text)    # Share text ko code block me display karta hai taki user manually copy kar sake
+    # Social Media Share Buttons in a single row with minimal gaps
+    st.markdown(f'''
+        <div class="share-buttons-container">
+            <a href="https://wa.me/?text={urllib.parse.quote(share_text)}" target="_blank" style="flex: 1; padding: 10px 15px; border-radius: 5px; background-color: #4CD080; color: #ffffff; font-size: 16px; font-weight: 600; text-align: center; text-decoration: none; display: inline-block; min-width: 120px; text-shadow: none;">WhatsApp 📱</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={urllib.parse.quote(share_text)}" target="_blank" style="flex: 1; padding: 10px 15px; border-radius: 5px; background-color: #2196F3; color: #ffffff; font-size: 16px; font-weight: 600; text-align: center; text-decoration: none; display: inline-block; min-width: 120px; text-shadow: none;">LinkedIn 💼</a>
+            <a href="https://twitter.com/intent/tweet?text={urllib.parse.quote(share_text)}" target="_blank" style="flex: 1; padding: 10px 15px; border-radius: 5px; background-color: #29B6F6; color: #ffffff; font-size: 16px; font-weight: 600; text-align: center; text-decoration: none; display: inline-block; min-width: 120px; text-shadow: none;">Twitter 🐦</a>
+        </div>
+    ''', unsafe_allow_html=True)
 
 else:    # Agar quote fetch nahi ho paya
     st.warning("Unable to fetch quote. Please try again.")    # Warning message dikhata hai
