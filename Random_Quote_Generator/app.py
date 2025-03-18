@@ -370,9 +370,9 @@ if st.session_state.quote:    # Agar quote successfully fetch hua hai
     # Social Media Share Buttons in a single row with minimal gaps
     st.markdown(f'''
         <div class="share-buttons-container">
-            <a href="https://wa.me/?text={urllib.parse.quote(share_text)}" target="_blank" style="flex: 1; padding: 10px 15px; border-radius: 5px; background-color: #4CD080; color: #ffffff; font-size: 16px; font-weight: 600; text-align: center; text-decoration: none; display: inline-block; min-width: 120px; text-shadow: none;">WhatsApp 📱</a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url={urllib.parse.quote(share_text)}" target="_blank" style="flex: 1; padding: 10px 15px; border-radius: 5px; background-color: #2196F3; color: #ffffff; font-size: 16px; font-weight: 600; text-align: center; text-decoration: none; display: inline-block; min-width: 120px; text-shadow: none;">LinkedIn 💼</a>
-            <a href="https://twitter.com/intent/tweet?text={urllib.parse.quote(share_text)}" target="_blank" style="flex: 1; padding: 10px 15px; border-radius: 5px; background-color: #29B6F6; color: #ffffff; font-size: 16px; font-weight: 600; text-align: center; text-decoration: none; display: inline-block; min-width: 120px; text-shadow: none;">Twitter 🐦</a>
+            <a href="https://wa.me/?text={urllib.parse.quote(share_text)}" target="_blank" style="flex: 1; padding: 10px 15px; border-radius: 5px; background-color: #4CD080; color: #ffffff; font-size: 16px; font-weight: 600; text-align: center; text-decoration: none; display: inline-block; min-width: 120px; text-shadow: none;">WhatsApp</a>
+            <a href="https://telegram.me/share/url?url={urllib.parse.quote(share_text)}" target="_blank" style="flex: 1; padding: 10px 15px; border-radius: 5px; background-color: #0088cc; color: #ffffff; font-size: 16px; font-weight: 600; text-align: center; text-decoration: none; display: inline-block; min-width: 120px; text-shadow: none;">Telegram</a>
+            <a href="https://twitter.com/intent/tweet?text={urllib.parse.quote(share_text)}" target="_blank" style="flex: 1; padding: 10px 15px; border-radius: 5px; background-color: #1DA1F2; color: #ffffff; font-size: 16px; font-weight: 600; text-align: center; text-decoration: none; display: inline-block; min-width: 120px; text-shadow: none;">Twitter</a>
         </div>
     ''', unsafe_allow_html=True)
 
