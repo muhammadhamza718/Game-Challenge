@@ -1,13 +1,23 @@
-import streamlit as st # Ye Ui banane ke liye use hota hai
-import pandas as pd # Ye Dataframe banane ke liye use hota hai
-from datetime import datetime, timedelta # Ye Date and Time banane ke liye use hota hai
-import json # Ye JSON file banane ke liye use hota hai
-import os # Ye File path banane ke liye use hota hai
-import plotly.express as px # Ye Plot banane ke liye use hota hai
-import uuid # Ye Unique ID banane ke liye use hota hai
-import random # Ye Random number banane ke liye use hota hai
-from PIL import Image # Ye Image banane ke liye use hota hai
-import io # Ye Input/Output banane ke liye use hota hai
+import streamlit as st 
+# Ye Ui banane ke liye use hota hai
+import pandas as pd 
+# Ye Dataframe banane ke liye use hota hai
+from datetime import datetime, timedelta 
+# Ye Date and Time banane ke liye use hota hai
+import json 
+# Ye JSON file banane ke liye use hota hai
+import os 
+# Ye File path banane ke liye use hota hai
+import plotly.express as px 
+# Ye Plot banane ke liye use hota hai
+import uuid 
+# Ye Unique ID banane ke liye use hota hai
+import random 
+# Ye Random number banane ke liye use hota hai
+from PIL import Image 
+# Ye Image banane ke liye use hota hai
+import io
+# Ye Input/Output banane ke liye use hota hai
 
 # Ye Page ki Configuration ko modify karne ke liye use hota hai
 st.set_page_config(
