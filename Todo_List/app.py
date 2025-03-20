@@ -34,7 +34,8 @@ st.markdown(
         width: 500px;
     }
     </style>
-    """, unsafe_allow_html=True
+    """,
+    unsafe_allow_html=True
 )
 
 # Apply custom styling to the TaskMaster application
